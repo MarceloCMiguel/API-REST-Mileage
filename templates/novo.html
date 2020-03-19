@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Adicionar modelo</h1>
+      <form method="POST" action="{{ url_for('criar') }}">
+        <input type="hidden" name="proxima" value="{{proxima}}">
+          <p><label>Modelo:</label> <input class="form-control" type="text" name="modelo" required></p>
+          <p><label>Motor:</label> <input class="form-control" type="text" name="motor" required></p>
+          <p><label>Marca:</label> <input class="form-control" type="text" name="marca" required></p>
+          <p><button class="btn btn-primary" type="submit">Adicionar</button></p>
+      </form>
+  </div>
+</body>
+</html>
