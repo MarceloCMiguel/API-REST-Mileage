@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request,render_template, redirect, session, flash, url_for
-
+import db
 
 app=Flask(__name__)
 
@@ -168,7 +168,12 @@ def retira_modelo(modeloo):
 
 
 
-
+#test to insert data to the data base
+@app.route("/test")
+def test():
+    for i in carros:
+        db.db.collection.insert_one({"carros":i})
+    return jsonify({"Lista de carros adicionada ao MongoDB Atlas":carros})
 
 
 
@@ -176,5 +181,4 @@ def retira_modelo(modeloo):
 
 
 if __name__ == '__main__': 
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(debug=True)
