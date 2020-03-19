@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request,render_template, redirect, session, flash, url_for
-import db
+
 
 app=Flask(__name__)
 
