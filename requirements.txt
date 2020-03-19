@@ -6,7 +6,7 @@ astroid==1.6.0
 attrs==19.3.0
 backcall==0.1.0
 base-local-planner==1.16.3
-bleach==3.1.0
+bleach==3.1.1
 bondpy==1.8.3
 Brlapi==0.6.6
 camera-calibration==1.14.0
