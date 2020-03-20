@@ -56,7 +56,7 @@ def index():
 @app.route('/motor') #Filtar o motor
 def receber_motor():
     proxima = request.args.get('proxima')
-    return render_template('motor.html', proxima=proxima,carros_=carros) #Renderiza o template novo
+    return render_template('motor.html', proxima=proxima, carros_=carros) #Renderiza o template novo
 
 #configuração da rota para filtrar o carro
 @app.route('/autenticar', methods=['POST', ])
