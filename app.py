@@ -1,5 +1,5 @@
-from flask import Flask, jsonify, request,render_template, redirect, session, flash, url_for
-import db
+from flask import Flask, jsonify, request,render_template, redirect, session, flash, url_for,Markup
+import math
 
 app=Flask(__name__)
 
@@ -43,16 +43,20 @@ carros= [
 
 ]
 
-
 # INSIRA SEU CÓDIGO
 
 # -------- Informações Gerais -------
 @app.route('/') 
 def index():
-    for i in carros:   # ADICIONA A LISTA DE CARROS NO MONGODB
-        db.db.collection.insert_one({"carros":i})
     return render_template('lista.html', titulo='Informações Gerais', carros_=carros)
 
+@app.route('/graficos')
+def bar():
+    valor_max = 0
+    for i in carros:
+        if float(i["motor"]) > valor_max:
+            valor_max = float(i["motor"])
+    return render_template('graficos.html', title='Gráfico do motor de cada veículo', valor_max=valor_max, carros_=carros)
 # -------- Filtrar Motor -------
 @app.route('/motor')
 def receber_motor():
@@ -62,7 +66,6 @@ def receber_motor():
 #configuração da rota para filtrar o carro
 @app.route('/autenticar', methods=['POST', ])
 def autenticar():
-    proxima_pagina = request.form['proxima']
     motor = request.form['motor']
     motor_filt=[]
     for i in carros:
